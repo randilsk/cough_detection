@@ -3,3 +3,12 @@ __pycache__/
 *.pyc
 *.wav
 *.png
+*.zip
+*.tar.gz
+
+# datasets - too large for git, downloadable via scripts instead
+ESC-50/
+vocalsound/
+snoring/
+speech_commands/
+data/
