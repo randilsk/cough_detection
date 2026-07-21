@@ -4,7 +4,7 @@ Trains and quantizes a TinyML model that classifies short audio clips as
 **cough / sneeze / snore / speech / background**, producing a TFLite Micro
 model ready to deploy on an ESP32.
 
-This is the ML half of a larger project: an ESP32-based wake-on-sound
+This is the ML half of a another project: an ESP32-based wake-on-sound
 respiratory event classifier — a battery-powered device that listens
 continuously, wakes on detected sound, and classifies it on-device.
 The hardware/firmware half lives in a separate repo:
