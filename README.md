@@ -4,9 +4,7 @@ A battery-powered ESP32 device that listens continuously in a low-power state,
 wakes on detected sound, and classifies the audio as **cough / sneeze / snore /
 speech / background** using an on-device TinyML model (TFLite Micro).
 
-Built as a final-year EE portfolio project to learn TinyML deployment, FreeRTOS,
-bare-metal I2S/DMA programming, and I2C/SPI/UART protocols in one integrated build,
-rather than as isolated tutorial exercises.
+TinyML deployment, FreeRTOS,bare-metal I2S/DMA programming, and I2C/SPI/UART protocols in one integrated build
 
 ## Hardware
 
@@ -19,6 +17,7 @@ rather than as isolated tutorial exercises.
 ## Project status
 
 **Phase 1 — Signal processing fundamentals (complete)**
+
 - Learned FFT/DFT, Nyquist limit, conjugate symmetry, frequency resolution
 - `scripts/fft_explore.py` — loads a wav file, computes rfft, plots magnitude vs frequency
 - `scripts/mel_explore.py` — computes and visualizes a log-mel spectrogram from a real recording
@@ -26,15 +25,15 @@ rather than as isolated tutorial exercises.
   mel filterbank → log → stacked spectrogram
 
 **Phase 2 — Dataset construction (complete)**
-Built a balanced, labeled dataset from four public sources (no manual recording needed):
+Built a balanced, labeled dataset from four public sources:
 
-| Class | Source(s) | Count |
-|---|---|---|
-| cough | ESC-50 + VocalSound (MIT) | 2000 |
-| sneeze | ESC-50 + VocalSound (MIT) | 2000 |
-| snore | ESC-50 + Kaggle snoring dataset | 540 |
-| background | ESC-50 + Kaggle snoring dataset (non-snore folder) | 820 |
-| speech | Google Speech Commands (8 words: yes/no/stop/go/up/down/left/right) | 2000 |
+| Class      | Source(s)                                                           | Count |
+| ---------- | ------------------------------------------------------------------- | ----- |
+| cough      | ESC-50 + VocalSound (MIT)                                           | 2000  |
+| sneeze     | ESC-50 + VocalSound (MIT)                                           | 2000  |
+| snore      | ESC-50 + Kaggle snoring dataset                                     | 540   |
+| background | ESC-50 + Kaggle snoring dataset (non-snore folder)                  | 820   |
+| speech     | Google Speech Commands (8 words: yes/no/stop/go/up/down/left/right) | 2000  |
 
 **Total: 7360 samples.** Snore and background are kept below the 2000 target
 deliberately (limited real data available) — will be handled via light
@@ -46,11 +45,13 @@ randomly samples down oversized classes (seeded for reproducibility), and
 writes `manifest.csv` — the single source of truth for what's in the training set.
 
 **Phase 3 — Feature extraction + training (next)**
+
 - Loop over `manifest.csv`, compute log-mel spectrogram per file
 - Light augmentation for the snore class
 - Train small CNN, convert to TFLite Micro (int8 quantized)
 
 **Phase 4 — Hardware integration (planned)**
+
 - ESP-IDF bare-metal I2S/DMA audio capture with wake-on-sound VAD
 - FreeRTOS task pipeline: capture → VAD → feature extraction → inference → UI/logging
 - OLED status display, SD card event logging, battery power management
@@ -84,6 +85,7 @@ tar -xzf speech_commands.tar.gz -C speech_commands
 ```
 
 Then:
+
 ```bash
 python build_manifest.py
 ```

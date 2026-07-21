@@ -1,0 +1,16 @@
+=== v2_earlystop ===
+test_accuracy: 0.8696
+test_loss: 0.3585
+              precision    recall  f1-score   support
+
+  background       0.80      0.89      0.84       123
+       cough       0.87      0.88      0.88       300
+      sneeze       0.85      0.78      0.81       300
+       snore       0.91      0.89      0.90        81
+      speech       0.90      0.94      0.92       300
+
+    accuracy                           0.87      1104
+   macro avg       0.87      0.87      0.87      1104
+weighted avg       0.87      0.87      0.87      1104
+
+
