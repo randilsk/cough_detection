@@ -10,9 +10,8 @@ continuously, wakes on detected sound, and classifies it on-device.
 The hardware/firmware half lives in a separate repo:
 **[esp32-cough-classifier-firmware](#)** _(link once created)_.
 
-Built to learn TinyML deployment, FreeRTOS, bare-metal I2S/DMA programming,
-and I2C/SPI/UART protocols in one integrated build, for a final-year EE
-portfolio project — rather than as isolated tutorial exercises.
+Trains and quantizes a TinyML model that classifies short audio clips as
+cough, sneeze, snore, speech, or background sounds.
 
 ## Why two repos
 
